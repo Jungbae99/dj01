@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{%block con%}
+
+  <form method="post">
+    {% csrf_token %}
+      <textarea class="form-control"  style="height: 100px; width: 200px;" name='tread' value="{{r}}" placeholder='읽어드릴게요'></textarea>
+      <br>
+      <button class="btn btn-secondary">READ!</button>
+  </form>
+
+  {% if fn %}
+  <audio autoplay controls>
+    <source src='/media/{{fn}}.mp3' type="audio/mp3">
+  </audio>
+  {% endif %}
+
+{%endblock%}

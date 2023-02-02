@@ -1,0 +1,34 @@
+{%extends 'base.html'%}
+{%block con%}
+
+  <h1><b>BOOK PAGE</b></h1>
+
+  <div class="text-end">
+      <a href="{% url 'book:create' %}" class="btn-btn dark"> + BOOKMARK</a> 
+  </div>
+  <br><br>
+<div class="row">
+  {%for i in bset%}
+    <div class="col-sm-4 mb-3 mb-sm-0 mt-4">
+      <div class="card">
+        <div class="card-body" {%if i.impo%} style='background-color: antiquewhite;' {%endif%}>
+          <h5 class="card-title">{{i.site_name}}</h5>
+          <p class="card-text">{{i.site_con|truncatechars:10}}</p>
+          <a href="{{ i.site_url }}" class="btn btn-primary">사이트이동</a>
+        </div>
+      </div>
+    </div> 
+  {% empty %}
+    <div class="col-sm-4 mb-3 mb-sm-0">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">NO date</h5>
+          <p class="card-text">NO date</p>
+          <a href="#" class="btn btn-primary">NO date</a>
+        </div>
+      </div>
+    </div> 
+  {% endfor %}
+</div>
+
+{%endblock%}
